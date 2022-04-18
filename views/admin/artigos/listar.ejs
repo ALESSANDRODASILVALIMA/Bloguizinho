@@ -1,0 +1,54 @@
+<%- include('../../partials/header.ejs'); %>
+<%- include('../../partials/navbar.ejs'); %>
+<body>
+    <div class="container">
+        <hr>
+    <a href="/admin/artigos/new" class="btn btn-primary">Criar Nova Categoria</a>
+    <hr>
+    <table class="table table-striped ">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Titulo Artigo</th>
+                <th>Slug Artigo</th>
+                <th>Categoria</th>
+                <th>Ações</th>
+            </tr>            
+        </thead>
+        <% dadosArtigo.forEach(function(dadosArtigos){ %>
+            <tr>
+                <th><%= dadosArtigos.id %></th>
+                <th><%= dadosArtigos.titulo %></th>
+                <th><%= dadosArtigos.slug %></th>
+               <!-- Atenção category é o nome da tabela no banco de dados -->
+                <th><%= dadosArtigos.category.titulo %></th>
+                <th>
+                    <form action="/artigos/editar" method="post" style="display: inline-block;">
+                    <button class="btn btn-warning" name="CodArtigo" value="<%= dadosArtigos.id %>">Editar</button>
+                    
+                    </form>
+
+                    <form action="/artigos/delete" method="post" style=" display: inline-block" onsubmit="ConfirmaDeleta(event, this)">
+                    <button class="btn btn-danger">Deletar</button>
+                    <input type="hidden" name="id" value="<%= dadosArtigos.id %>">
+                    </form>
+                </th>
+            </tr>
+        <% }) %>
+
+    </table>
+    </div>
+
+</body>
+
+<script>
+    function ConfirmaDeleta(event, form){
+        event.preventDefault();
+        var  escolha = confirm("Voce quer deletar este Artigo?");
+        if(escolha){   
+                
+            form.submit();
+        }
+    }
+</script>
+<%- include('../../partials/footer.ejs') %>

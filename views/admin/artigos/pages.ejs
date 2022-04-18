@@ -1,0 +1,47 @@
+<%- include('../../partials/header.ejs')%>
+<%- include('../../partials/homenavbar.ejs')%>
+<body>
+    
+
+    <div class="container">       
+
+    <% result.artigos.rows.forEach(function(dados){ %>
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title"><%= dados.titulo %></h5>
+            </div>
+            <div class="card-body">              
+              <!-- <p class="card-text">Com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional.</p> -->
+             <form method="post" >
+              <a href="/articles/<%= dados.slug %>" class="btn btn-primary">Ler Artigo</a>
+            </form>
+            </div>
+          </div><br>
+    <% })%>   
+    
+    <nav aria-label="Page navigation example">
+      <% var valorantrior = (num-1); %>
+      <ul class="pagination justify-content-center" >        
+        
+        <li class="page-item"><a class="page-link" href="http://localhost:9091/artigos/page/<%= valorantrior %>">Anterior</a></li>
+        
+
+        <% var b = 0; %>
+        <% for(var a = 0; a < artigos.count; a = a+4){ %>
+          <%  b++; %>
+          <li class="page-item"><a class="page-link" href="http://localhost:9091/artigos/page/<%-b%>"><%- b %></a></li> 
+              
+        <% } %>
+
+        
+        <% if(num <= b){ %>           
+          <li class="page-item"><a class="page-link" href="http://localhost:9091/artigos/page/<%= ++num %>">Proximo</a></li>
+        <%}else{ %>
+          <li class="page-item"><a class="page-link" href="http://localhost:9091/artigos/page/<%= num %>">Proximo</a></li>
+        <%}%>
+      </ul>
+    </nav>
+    </div>
+</body>
+
+<%- include('../../partials/footer.ejs')%>

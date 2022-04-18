@@ -1,0 +1,18 @@
+<%- include('../../partials/header.ejs'); %>
+<%- include('../../partials/navbar.ejs'); %>
+
+<body>
+    <div class="containerLoguin">
+        <h1>Cadastra Usuarios</h1>
+        <form action="/admin/users/salvar" method="post">
+            <label for="">Email<%= duplicado%></label>
+            <input type="email" name="email" placeholder="exemplo@email.com" class="form-control" required><br>
+            <input type="password" name="senha" placeholder="Digite a senha" class="form-control"  required><br>
+            <button class="btn btn-primary btn-block">Cadastrar</button><br>
+        </form>
+        <img src="/img/user.png" alt="">
+    </div>
+</body>
+
+
+<%- include('../../partials/footer.ejs') %>

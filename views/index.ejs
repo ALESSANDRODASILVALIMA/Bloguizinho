@@ -1,0 +1,36 @@
+
+<%- include('./partials/header.ejs')%>
+<%- include('./partials/homenavbar.ejs')%>
+<body>
+    
+
+    <div class="container">
+
+        <div class="jumbotron">
+            <h1 class="display-4">Olá, mundo!</h1>
+            <p class="lead">Este é um site simples.</p>
+            <hr class="my-4">
+            <p>Este site é utilizado para cadastro de artigos.</p>
+            <a class="btn btn-primary btn-lg" href="/" role="button">Leia mais</a>
+        </div>
+
+    <% dadosArtigos.forEach(function(dados){ %>
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title"><%= dados.titulo %></h5>
+            </div>
+            <div class="card-body">              
+              <!-- <p class="card-text">Com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional.</p> -->
+             <form method="post" >
+              <a href="/articles/<%= dados.slug %>" class="btn btn-primary">Ler Artigo</a>
+            </form>
+            </div>
+          </div><br>
+    <% })%>  
+       </div>
+    <div class="pagination justify-content-center">
+        <a  class="btn btn-success " href="http://localhost:9091/artigos/page/2" >Ver Mais</a>
+    </div>
+    <br>
+</body>
+<%- include('./partials/footer.ejs')%>

@@ -1,0 +1,19 @@
+<%- include('../../partials/header.ejs'); %>
+<%- include('../../partials/navbar.ejs'); %>
+    <br>
+    <div class="container">
+        <form action="/categorias/atualizar" method="post">
+            <div class="card">
+                <div class="card-header">
+                <h3>Atualizar Categorias</h3>
+                </div>
+                <div class="card-body">
+                   <input type="text" name="titulo" placeholder="Titulo categoria" class="form-control" value="<%= dados.titulo%>"><br>
+                   <input type="hidden" name="id" placeholder="id categoria" class="form-control" value="<%= dados.id%>">
+                   <button class="btn btn-primary">Atualizar</button>
+                </div>
+              </div>
+        </form>
+    </div>
+<%- include('../../partials/footer.ejs') %>
+

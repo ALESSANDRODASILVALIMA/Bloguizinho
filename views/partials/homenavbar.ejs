@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+    Blogzinho
+    </a>
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class = "nav-link" href="/">Home</a>            
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Opções
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/admin/artigos/new">Criar Artigo</a>
+              <a class="dropdown-item" href="/admin/artigos/listar">Listar Artigos</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Algo mais aqui</a>
+            </div>
+          </li>       
+        
+        <% dadosCategoria.forEach(function(dados){ %>
+            <li class="nav-item">
+                <a class = "nav-link" href="/filtraCategoria/<%= dados.slug %>"><%= dados.titulo %></a>
+            </li>
+        <% }) %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Usuario
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/loguin">Entrar</a>
+            <a class="dropdown-item" href="/logout">Sair</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Configurações</a>
+          </div>
+        </li>  
+    </ul>
+</nav>

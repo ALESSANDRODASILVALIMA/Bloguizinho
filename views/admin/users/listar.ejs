@@ -1,0 +1,32 @@
+<%- include('../../partials/header.ejs'); %>
+<%- include('../../partials/navbar.ejs'); %>
+
+
+<body>
+    
+    <div class="container">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Emais</th>
+            <th scope="col">Ações</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+            <% dadosUsuario.forEach(function(dados){ %>
+          <tr>            
+            <td><%=dados.id%></td>
+            <td><%=dados.nome%></td> 
+            <td><button class="btn btn-primary">Ação</button></td>                    
+          </tr>    
+          <% })%>     
+        </tbody>
+      </table>
+    </div>
+</body>
+
+
+
+<%- include('../../partials/footer.ejs') %>

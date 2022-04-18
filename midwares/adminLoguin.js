@@ -1,0 +1,9 @@
+function adminLoguins(req, res, next) {
+    if(req.session.user != undefined){
+        next();
+    }else{
+        res.redirect("/loguin");
+    }
+}
+
+module.exports = adminLoguins;

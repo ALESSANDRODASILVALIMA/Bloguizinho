@@ -1,0 +1,15 @@
+.containerLoguin{
+    display: block;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 40px;
+    background-color: aliceblue;
+    text-align: center;
+   
+}
+
+.containerLoguin img{
+    max-width: 40%;
+    max-height: 40%;
+}

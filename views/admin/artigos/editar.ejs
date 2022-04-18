@@ -1,0 +1,48 @@
+<%- include('../../partials/header.ejs'); %>
+<%- include('../../partials/navbar.ejs'); %>
+
+<body>
+        <br>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                <h3>Atualizar Artigo</h3>
+                </div>
+                <div class="card-body">
+
+                    <form action="/artigos/atualizar" method="post">
+                        <input type="text" name="titulo" class="form-control" value="<%=dadosArtigo.titulo%>"><br>
+                        <textarea name="corpo" id="txtEditor" class="form-control" ><%- dadosArtigo.body%></textarea><br>
+                        <input type="hidden" name="id" value="<%=dadosArtigo.id%>">
+                        <select name="cars" id="cars" class="form-control">
+                          <% dadosCategoria.forEach(function(dados){%>
+                            <% if(dados.id == dadosArtigo.categoryId){ %>
+                            <option value="<%= dados.titulo %>" selected><%= dados.titulo %></option> 
+                            <% }else{%>
+                            <option value="<%= dados.titulo %>"><%= dados.titulo %></option> 
+                            <% }%>
+                          <% }) %>                               
+                        </select><br>
+                        <button class="btn btn-primary">Atualizar</button><br>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+</body>
+
+<%- include('../../partials/footer.ejs') %>
+
+<script src="/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+      language: 'pt_BR',    
+      selector: '#txtEditor',     
+      height: 300,
+    plugins: [
+    'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+      'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+      'table emoticons template paste help'
+    ],
+    });
+</script>

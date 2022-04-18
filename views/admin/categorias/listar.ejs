@@ -1,0 +1,54 @@
+<%- include('../../partials/header.ejs'); %>
+<%- include('../../partials/navbar.ejs'); %>
+<body>
+    
+
+<br>
+<div class="container">
+    <hr>
+    <a href="/admin/categorias/new" class="btn btn-primary">Criar Nova Categoria</a>
+    <hr>
+    <table class="table table-striped ">
+        <thead class="thead-dark">
+            <tr>
+                <th>id</th>
+                <th>Nome Categoria</th>
+                <th>Slug Categoria</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+            
+            <% dadosCategies.forEach(function(dados){ %>
+
+                <tr>
+                    <th><%= dados.id %></th>
+                    <th><%= dados.titulo %></th>
+                    <th><%= dados.slug %></th>
+                    <th>
+                        <form action="/admin/categorias/deletar" method="post" style="display: inline-block;" onsubmit="ConfirmaDeleta(event, this)">
+                        <button class="btn btn-danger">Deletar</button>                       
+                        <input type="hidden" name="id" value="<%= dados.id %>">                        
+                        </form>
+                        <form action="/admin/categorias/editar/<%= dados.id %>" method="get" style="display: inline-block">
+                        <button class="btn btn-warning">Editar</button></th>
+                        <input type="hidden" name="id" value="<%= dados.id %>">
+                        </form>
+                </tr>
+                  
+            <%}) %>           
+      
+    </table>
+</div>
+</body>
+<script >
+    function ConfirmaDeleta(event, form){
+        event.preventDefault();
+        var  escolha = confirm("Voce quer deletar assa categoria?");
+        if(escolha){   
+                
+            form.submit();
+        }
+    }
+</script>
+
+<%- include('../../partials/footer.ejs') %>
